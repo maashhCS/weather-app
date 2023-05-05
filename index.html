@@ -5,9 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="main.js" defer></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
 </head>
 <body>
-    
+    <header>
+        <div class="header-text">
+            <h1>Weather App</h1>
+        </div>
+    </header>
+    <section class="search-input">
+        <p class="search-input-field-error hidden">Search field empty please write something before searching.</p>
+        <label for="search-input-field">
+            <input type="text" name="search-input" id="search-input-field" placeholder="Londo...">
+            <img src="svg/magnify.svg" alt="search-icon" id="magnify-svg" draggable="false">
+        </label>
+    </section>
+    <main>
+        <div class="content">
+            <div class="city-name"></div>
+            <div class="city-temperature"></div>
+            <div class="city-temperature-feels-like"></div>
+            <div class="city-humidity"></div>
+            <div class="city-wind"></div>
+            <div class="city-7-day-forecast-div">
+                <div class="city-day-1-forecast"></div>
+                <div class="city-day-2-forecast"></div>
+                <div class="city-day-3-forecast"></div>
+                <div class="city-day-4-forecast"></div>
+                <div class="city-day-5-forecast"></div>
+                <div class="city-day-6-forecast"></div>
+                <div class="city-day-7-forecast"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h2>Made by <a href="https://github.com/maashhCS">maashh</a> with <a href="https://www.weatherapi.com/">weatherapi</a></h2>
+    </footer>
 </body>
 </html>
