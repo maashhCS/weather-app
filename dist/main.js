@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/change_content.js":
+/*!*******************************!*\
+  !*** ./src/change_content.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"changeContent\": () => (/* binding */ changeContent)\n/* harmony export */ });\nconst cityName = document.querySelector('.city-name');\nconst cityTemperature = document.querySelector('.city-temperature');\nconst cityHumidity = document.querySelector('.city-humidity h5');\nconst cityHumiditySVG = document.querySelector('.weather-humidity-img');\nconst cityWind = document.querySelector('.city-wind h5');\nconst cityWindSVG = document.querySelector('.weather-wind-img');\n\nfunction changeContent(temperature){\n    cityName.innerText = `${temperature.location.name}, ${temperature.location.country}`;\n    cityTemperature.innerText = `${temperature.current.temp_c} °C`;\n    cityHumiditySVG.classList.remove('hidden');\n    cityHumidity.innerText = `${temperature.current.humidity}%`;\n    cityWindSVG.classList.remove('hidden');\n    cityWind.innerText = `${temperature.current.wind_kph}km/h`;\n}\n\n\n//# sourceURL=webpack://weather-app/./src/change_content.js?");
+
+/***/ }),
+
 /***/ "./src/fetch_api.js":
 /*!**************************!*\
   !*** ./src/fetch_api.js ***!
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"fetchApiData\": () => (/* binding */ fetchApiData)\n/* harmony export */ });\nconst apiUrl = 'http://api.weatherapi.com/v1/';\nconst apiKey = 'd7ad6837fd37407e8e0163826230105';\n\nasync function fetchApiData(cityName){\n    try {\n        const temperatureData = await fetch(apiUrl + 'current.json?key=' + apiKey + '&q=' + cityName, {mode: 'cors', });\n        if(temperatureData.status !== 200){\n            return temperatureData.status;\n        }\n        const temperature = await temperatureData.json();\n        console.log(temperature);\n        return temperature;\n    } catch (err) {\n        console.log(err);\n    }\n}\n\n//# sourceURL=webpack://weather-app/./src/fetch_api.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cityNotFound\": () => (/* binding */ cityNotFound),\n/* harmony export */   \"fetchApiData\": () => (/* binding */ fetchApiData)\n/* harmony export */ });\n/* harmony import */ var _change_content__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./change_content */ \"./src/change_content.js\");\n\n\nconst cityNotFound = document.querySelector('.search-input-field-error-city-not-found');\nconst apiUrl = 'http://api.weatherapi.com/v1/';\nconst apiKey = 'd7ad6837fd37407e8e0163826230105';\n\nasync function fetchApiData(cityName){\n    try {\n        const temperatureData = await fetch(apiUrl + 'current.json?key=' + apiKey + '&q=' + cityName, {mode: 'cors', });\n        if(temperatureData.status !== 200){\n            cityNotFound.classList.remove('hidden');\n            return;\n        }\n        const temperature = await temperatureData.json();\n        cityNotFound.classList.add('hidden');\n        (0,_change_content__WEBPACK_IMPORTED_MODULE_0__.changeContent)(temperature);\n    } catch (err) {\n        console.log(err);\n    }\n}\n\n//# sourceURL=webpack://weather-app/./src/fetch_api.js?");
 
 /***/ }),
 
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fetch_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetch_api */ \"./src/fetch_api.js\");\n\n\nconst searchField = document.querySelector('.search-input-field input');\nconst searchFieldButton = document.querySelector('#magnify-svg');\nconst searchFieldError = document.querySelector('.search-input-field-error')\n\nsearchFieldButton.addEventListener('click', () => {\n    if(searchField.value === ''){\n        searchFieldError.classList.remove('hidden');\n    } else {\n        searchFieldError.classList.add('hidden');\n        const temperatureData = (0,_fetch_api__WEBPACK_IMPORTED_MODULE_0__.fetchApiData)(searchField.value);\n    }\n});\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fetch_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetch_api */ \"./src/fetch_api.js\");\n\n\nconst searchField = document.querySelector('#search-input-field');\nconst searchFieldButton = document.querySelector('#magnify-svg');\nconst searchFieldError = document.querySelector('.search-input-field-error')\n\nsearchFieldButton.addEventListener('click', () => {\n    if(searchField.value === ''){\n        searchFieldError.classList.remove('hidden');\n        return;\n    } else {\n        searchFieldError.classList.add('hidden');\n        (0,_fetch_api__WEBPACK_IMPORTED_MODULE_0__.fetchApiData)(searchField.value);\n    }\n});\n\nsearchField.addEventListener('keydown', (e) => {\n    if(e.key === 'Enter'){\n        if(searchField.value === ''){\n            searchFieldError.classList.remove('hidden');\n            return;\n        }\n        searchFieldError.classList.add('hidden');\n        (0,_fetch_api__WEBPACK_IMPORTED_MODULE_0__.fetchApiData)(searchField.value);\n    }\n});\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
 
 /***/ })
 

@@ -15,9 +15,10 @@
         </div>
     </header>
     <section class="search-input">
-        <p class="search-input-field-error hidden">Search field empty please write something before searching.</p>
+        <p class="search-input-field-error-city-not-found hidden">City not found. Try again!</p>
+        <p class="search-input-field-error hidden">Search field empty please write a city something before searching.</p>
         <label for="search-input-field">
-            <input type="text" name="search-input" id="search-input-field" placeholder="Londo...">
+            <input type="text" name="search-input" id="search-input-field">
             <img src="svg/magnify.svg" alt="search-icon" id="magnify-svg" draggable="false">
         </label>
     </section>
@@ -25,9 +26,8 @@
         <div class="content">
             <div class="city-name"></div>
             <div class="city-temperature"></div>
-            <div class="city-temperature-feels-like"></div>
-            <div class="city-humidity"></div>
-            <div class="city-wind"></div>
+            <div class="city-humidity"><img src="svg/humidity.svg" alt="wind svg" class="weather-humidity-img hidden" draggable="false"><h5></h5></div>
+            <div class="city-wind"><img src="svg/wind.svg" alt="wind svg" class="weather-wind-img hidden" draggable="false"><h5></h5></div>
             <div class="city-7-day-forecast-div">
                 <div class="city-day-1-forecast"></div>
                 <div class="city-day-2-forecast"></div>
