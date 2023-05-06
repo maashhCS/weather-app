@@ -72,7 +72,7 @@ header {
 
 footer {
     margin-top: auto;
-    font-size: 12px;
+    font-size: 10px;
     color: #ffffff;
     padding: 4px;
 }
@@ -81,28 +81,64 @@ footer a {
     color: #ffffff;
     text-decoration: underline;
     text-decoration-color: #f95959;
+    transition: 0.2s ease-in-out;
 }
 
 footer a:hover {
     color: #f95959;
+    font-size: 16px;
+    transition: 0.2s ease-in-out;
 }
 
 main {
-    height: 50vh;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .content {
-    border: 1px red solid;
     padding: 8px;
+    margin-top: 24px;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
 }
 
 .hidden {
     display: none;
 }
 
+.city-temperature {
+    font-size: 38px;
+}
+
+.city-name {
+    text-align: center;
+}
+
 .search-input-field-error {
     color: #f95959;
+}
+
+.city-wind,
+.city-humidity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.weather-wind-img,
+.weather-humidity-img {
+    width: 28px;
+    height: auto;
+}
+
+.search-input-field-error-city-not-found {
+    color: #ffffff;
 }
